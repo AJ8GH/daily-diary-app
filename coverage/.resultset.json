@@ -1,0 +1,23 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/adamjonas/Projects/makers/week-4/daily-diary-app/app.rb": [
+        1,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/adamjonas/Projects/makers/week-4/daily-diary-app/spec/feature/adding_entries_spec.rb": [
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1614115692
+  }
+}
