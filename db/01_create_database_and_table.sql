@@ -1,0 +1,7 @@
+CREATE DATABASE daily_diary;
+
+CREATE TABLE entries (
+  id SERIAL PRIMARY KEY,
+  entry varchar ( 500 ) NOT NULL,
+  date DATE NOT NULL DEFAULT CURRENT_DATE
+);
