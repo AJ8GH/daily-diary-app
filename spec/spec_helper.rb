@@ -1,19 +1,26 @@
 require 'coveralls'
 Coveralls.wear!
 
+require_relative 'setup_test_database'
+
+ENV['ENVIRONMENT'] = 'test'
+ENV['RACK_ENV']    = 'test'
+
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'pg'
 
+require 'diary'
+
 require_relative '../app'
 
 Capybara.app = DailyDiary
 
-ENV['RACK_ENV']    = 'test'
-ENV['ENVIRONMENT'] = 'test'
+
 
 RSpec.configure do |config|
+  config.before(:each) { setup_test_database }
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

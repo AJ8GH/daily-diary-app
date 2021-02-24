@@ -6,6 +6,7 @@ class DailyDiary < Sinatra::Base
   end
 
   get '/entries' do
+    @entries = Diary.all
     erb :'entries/index'
   end
 
@@ -14,6 +15,7 @@ class DailyDiary < Sinatra::Base
   end
 
   post '/entries' do
+    Diary.create(params[:entry])
     redirect '/entries'
   end
 
