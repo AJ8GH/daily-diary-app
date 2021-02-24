@@ -1,4 +1,5 @@
 require 'sinatra'
+require './lib/entry'
 
 class DailyDiary < Sinatra::Base
   get '/' do
@@ -6,7 +7,7 @@ class DailyDiary < Sinatra::Base
   end
 
   get '/entries' do
-    @entries = Diary.all
+    @entries = Entry.all
     erb :'entries/index'
   end
 
@@ -15,7 +16,7 @@ class DailyDiary < Sinatra::Base
   end
 
   post '/entries' do
-    Diary.create(params[:entry])
+    Entry.create(title: params[:title], body: params[:body])
     redirect '/entries'
   end
 

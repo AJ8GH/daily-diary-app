@@ -11,7 +11,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'pg'
 
-require 'diary'
+require 'entry'
 
 require_relative '../app'
 

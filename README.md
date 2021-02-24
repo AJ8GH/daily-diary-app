@@ -16,13 +16,13 @@ Gems:
 
 ## Database setup
 
-Enter psql and create db called daily_diary
+- Enter psql and create db called daily_diary
 
 ```sql
 CREATE DATABASE daily_diary;
 ```
 
-Create a table called entries with 3 columns: id (serial primary key), entry (varchar (500) ), date ( default current_date)
+- Create a table called entries with 3 columns: id (serial primary key), entry (varchar (500) ), date ( default current_date)
 
 ```sql
 CREATE TABLE entries (
@@ -32,7 +32,13 @@ CREATE TABLE entries (
 );
 ```
 
-Test database - create a database called daily_diary_test with an identical table
+- Test database - create a database called daily_diary_test with an identical table
+
+- Add title column to both databases
+```sql
+ALTER TABLE entries
+ADD COLUMN title varchar ( 60 );
+```
 
 ## Running tests
 
