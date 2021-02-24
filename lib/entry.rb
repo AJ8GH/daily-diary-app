@@ -1,13 +1,15 @@
 require 'pg'
 
 class Entry
-  attr_reader :title, :body
+  attr_reader :title, :body, :id, :date
 
   class << self
     def create(title:, body:)
-      database_connection.exec(
-        "INSERT INTO entries (body, title) VALUES ('#{body}', '#{title}');"
-      )
+      query = database_connection.exec(
+        "INSERT INTO entries (body, title) VALUES ('#{body}', '#{title}')
+        RETURNING id, date;"
+      ).first
+      new(id: query['id'], date: query['date'], title: title, body: body)
     end
 
     def all
@@ -26,6 +28,8 @@ class Entry
   def initialize(title:, body:, id:, date:)
     @title = title
     @body  = body
+    @date  = date
+    @id    = id
   end
 
   private

@@ -5,6 +5,10 @@
 <h1>Your entries:</h1>
 <ul>
   <% @entries.each do |entry| %>
-    <li><%= entry.title %></li>
+    <li>
+    <a href="/entries/<%= entry.id %>">
+      <%= entry.title %>
+    </a>
+    </li>
   <% end %>
 </ul>
