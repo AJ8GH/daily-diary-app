@@ -19,7 +19,7 @@ class DailyDiary < Sinatra::Base
   end
 
   get '/entries/:id/show' do
-    @entry = Entry.find(id: session[:id])
+    @entry = Entry.find(id: params[:id])
     erb :show
   end
 
