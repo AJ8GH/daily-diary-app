@@ -10,14 +10,12 @@ end
 
 group :development, :test, :production do
   gem 'pg'
-end
-
-group :development, :test do
-  gem 'rubocop'
+  gem 'rake'
 end
 
 group :test do
   gem 'capybara'
   gem 'coveralls', require: false
   gem 'rspec'
+  gem 'rubocop'
 end

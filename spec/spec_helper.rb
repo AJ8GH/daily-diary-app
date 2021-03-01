@@ -8,8 +8,8 @@ ENV['RACK_ENV']    = 'test'
 
 require 'capybara'
 require 'capybara/rspec'
+require 'rake'
 require 'rspec'
-require 'pg'
 
 require 'entry'
 
@@ -17,10 +17,12 @@ require_relative '../app'
 
 Capybara.app = DailyDiary
 
+Rake.application.load_rakefile
 
 
 RSpec.configure do |config|
-  config.before(:each) { setup_test_database }
+  config.before(:suite) { Rake::Task['db:connect'].execute }
+  config.before(:each) { Rake::Task['db:clean'].execute }
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

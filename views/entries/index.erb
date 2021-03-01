@@ -6,9 +6,10 @@
 <ul>
   <% @entries.each do |entry| %>
     <li>
-    <a href="/entries/<%= entry.id %>">
       <%= entry.title %>
-    </a>
+      <form action="/entries/<%= entry.id %>">
+        <input type="submit" value="View Entry">
+      </form>
     </li>
   <% end %>
 </ul>

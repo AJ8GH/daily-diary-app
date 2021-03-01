@@ -50,5 +50,3 @@ Run tests with rspec
 ## Getting Started
 
 ## Approach and design
-
-

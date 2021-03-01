@@ -1,5 +1,6 @@
 require 'sinatra'
-require './lib/entry'
+require_relative 'lib/entry'
+require_relative 'lib/database_connection'
 
 class DailyDiary < Sinatra::Base
   get '/' do
@@ -9,6 +10,11 @@ class DailyDiary < Sinatra::Base
   get '/entries' do
     @entries = Entry.all
     erb :'entries/index'
+  end
+
+  get '/entries/:id' do
+    # @entry = Entry.find_by_id(params[:id])
+    erb :show
   end
 
   get '/entries/new' do
