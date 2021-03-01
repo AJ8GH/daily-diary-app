@@ -16,12 +16,8 @@ class Entry
     def all
       rows = DatabaseConnection.query("SELECT * FROM entries")
       rows.map do |row|
-        new(
-          id: row['id'],
-          date: row['date'],
-          title: row['title'],
-          body: row['body']
-        )
+        new(id: row['id'], date: row['date'],
+          title: row['title'], body: row['body'])
       end
     end
   end

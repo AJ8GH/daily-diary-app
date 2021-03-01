@@ -2,7 +2,7 @@ require 'rake'
 
 namespace :db do
   task :connect do
-    if ENV['ENVIRONMENT'] = 'test'
+    if ENV['ENVIRONMENT'] == 'test'
       puts '=== connected to test database ==='
       DatabaseConnection.setup('daily_diary_test')
     else
