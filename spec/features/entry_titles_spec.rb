@@ -5,6 +5,6 @@ feature 'giving each entry a title' do
     fill_in :title, with: 'Test title'
     fill_in :body, with: 'Test entry'
     click_button 'Submit'
-    expect(page).to have_content 'Test title'
+    expect(page).to have_button 'Test title'
   end
 end

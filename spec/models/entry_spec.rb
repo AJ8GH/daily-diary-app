@@ -18,6 +18,17 @@ describe Entry do
     end
   end
 
+  describe '.find' do
+    it 'finds entry by id' do
+      entry = described_class.create(title: 'Saw dog', body: 'I saw a dog today')
+      found_entry = described_class.find(id: entry.id)
+
+      expect(entry.id).to eq found_entry.id
+      expect(entry.title).to eq found_entry.title
+      expect(entry.body).to eq found_entry.body
+    end
+  end
+
   describe '#title' do
     it 'returns the title' do
       entry = described_class.new(title: 'Test title', body: 'Test entry', id: 1, date: '2021-02-24')

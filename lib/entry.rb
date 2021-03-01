@@ -1,14 +1,11 @@
-require 'pg'
-
 class Entry
   attr_reader :title, :body, :id, :date
 
   class << self
     def create(title:, body:)
-      row = DatabaseConnection.query(
-        "INSERT INTO entries (body, title) VALUES ('#{body}', '#{title}')
-        RETURNING id, date;"
-      ).first
+      row = DatabaseConnection.query("INSERT INTO entries (body, title)
+      VALUES ('#{body}', '#{title}') RETURNING *;").first
+
       new(id: row['id'], date: row['date'],
         title: row['title'], body: row['body'])
     end
@@ -19,6 +16,14 @@ class Entry
         new(id: row['id'], date: row['date'],
           title: row['title'], body: row['body'])
       end
+    end
+
+    def find(id:)
+      row = DatabaseConnection.query("SELECT * FROM entries
+        WHERE id = #{id};").first
+
+      new(id: row['id'], date: row['date'],
+        title: row['title'], body: row['body'])
     end
   end
 

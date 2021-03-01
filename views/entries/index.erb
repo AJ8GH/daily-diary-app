@@ -6,9 +6,8 @@
 <ul>
   <% @entries.each do |entry| %>
     <li>
-      <%= entry.title %>
-      <form action="/entries/<%= entry.id %>">
-        <input type="submit" value="View Entry">
+      <form action="/entries/<%= entry.id %>/show">
+        <input type="submit" value="<%= entry.title %>">
       </form>
     </li>
   <% end %>

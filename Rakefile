@@ -1,4 +1,7 @@
+require 'pg'
 require 'rake'
+
+require_relative 'lib/database_connection'
 
 namespace :db do
   task :connect do
@@ -12,6 +15,7 @@ namespace :db do
   end
 
   task :clean do
-    PG.connect(dbname: 'daily_diary_test').query('TRUNCATE entries;')
+    connection = PG.connect(dbname: 'daily_diary_test')
+    connection.exec('TRUNCATE entries RESTART IDENTITY;')
   end
 end

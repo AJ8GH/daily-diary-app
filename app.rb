@@ -1,8 +1,14 @@
 require 'sinatra'
+
 require_relative 'lib/entry'
 require_relative 'lib/database_connection'
 
 class DailyDiary < Sinatra::Base
+  configure do
+    enable :sessions, :method_override
+    set :session_secret, ENV['SESSION_SECRET']
+  end
+
   get '/' do
     erb :index
   end
@@ -12,8 +18,8 @@ class DailyDiary < Sinatra::Base
     erb :'entries/index'
   end
 
-  get '/entries/:id' do
-    # @entry = Entry.find_by_id(params[:id])
+  get '/entries/:id/show' do
+    @entry = Entry.find(id: session[:id])
     erb :show
   end
 

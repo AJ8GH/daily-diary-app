@@ -6,8 +6,8 @@ feature 'seeing a list of titles of all entries' do
 
     visit '/entries'
 
-    expect(page).to have_content 'Title one'
-    expect(page).to have_content 'Title three'
-    expect(page).to have_content 'Title two'
+    expect(page).to have_button 'Title one'
+    expect(page).to have_button 'Title three'
+    expect(page).to have_button 'Title two'
   end
 end

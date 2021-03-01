@@ -1,8 +1,6 @@
 require 'coveralls'
 Coveralls.wear!
 
-require_relative 'setup_test_database'
-
 ENV['ENVIRONMENT'] = 'test'
 ENV['RACK_ENV']    = 'test'
 
@@ -10,8 +8,6 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rake'
 require 'rspec'
-
-require 'entry'
 
 require_relative '../app'
 
