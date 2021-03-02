@@ -29,6 +29,17 @@ describe Entry do
     end
   end
 
+  describe '.update' do
+    it 'updates the entry' do
+      entry = described_class.create(title: 'Saw dog', body: 'I saw a dog today')
+      described_class.update(id: entry.id, title: 'Updated', body: 'This has changed')
+      updated_entry = described_class.find(id: entry.id)
+      expect(updated_entry.id).to eq entry.id
+      expect(updated_entry.body).to eq 'This has changed'
+      expect(updated_entry.title).to eq 'Updated'
+    end
+  end
+
   describe '#title' do
     it 'returns the title' do
       entry = described_class.new(title: 'Test title', body: 'Test entry', id: 1, date: '2021-02-24')

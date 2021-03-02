@@ -1,3 +1,7 @@
 <h2><%= @entry.title %></h2><br>
 <p><%= @entry.date %></p><br>
 <p><%= @entry.body %></p>
+
+<form action="/entries/<%= @entry.id %>/edit">
+  <input type="submit" value="Edit">
+<form>

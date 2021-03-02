@@ -25,6 +25,11 @@ class Entry
       new(id: row['id'], date: row['date'],
         title: row['title'], body: row['body'])
     end
+
+    def update(id:, title:, body:)
+      DatabaseConnection.query("UPDATE entries
+        SET title = '#{title}', body = '#{body}' WHERE id = #{id};")
+    end
   end
 
   def initialize(title:, body:, id:, date:)

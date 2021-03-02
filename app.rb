@@ -32,5 +32,13 @@ class DailyDiary < Sinatra::Base
     redirect '/entries'
   end
 
-  run! if app_file == $PROGRAM_NAME
+  get '/entries/:id/edit' do
+    @entry = Entry.find(id: params[:id])
+    erb :'entries/edit'
+  end
+
+  patch '/entries/:id' do
+    Entry.update(id: params[:id], title: params[:title], body: params[:body])
+    redirect "/entries/#{params[:id]}/show"
+  end
 end
